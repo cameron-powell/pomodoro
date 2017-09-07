@@ -20,9 +20,11 @@ def notify(title, message):
         system('''notify-send --urgency=critical "%s" "%s"''' % (title, message))
         # Audio notification
         system('''canberra-gtk-play --file=/usr/share/sounds/ubuntu/stereo/service-login.ogg''')
-    elif platform == 'darwin':  # MacOS
+    elif platform == 'darwin':  # MacOS Sierra
         # Visual notification
-        system("""osascript -e 'display notification "%s" with title "%s'""" % (message, title))
+        system("""osascript -e 'display notification "%s" with title "%s"'""" % (message, title))
+        # Audio notification
+        system("""afplay /System/Library/Sounds/Blow.aiff""")
     elif platform == 'cygwin':  # Windows/Cygwin
         pass
     else:  # Windows
